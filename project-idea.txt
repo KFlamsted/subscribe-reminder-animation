@@ -1,0 +1,55 @@
+Title: subscribe-like-reminder-animation
+
+Description
+A simple react page being used to make a "subscribe & like reminder" animation for youtube videos.
+The first page is consisting of two components
+- The actual subscribe & like reminder component
+- The administration panel.
+
+Background of the page is green. (Sort of like a green screen)
+
+Subscribe & like reminder animation component:
+Is a small white rectangel box with rounded corner. Positioned in the middle of the screen.
+Inside the white box there's four buttons next to each other:
+- A like button (this is grey)
+- A dislike button (this is grey)
+- A "Subscribe" button (this is red)
+- A Bell which is white with gray border/outlines.
+Feel free to find appropriate icons using react-icons npm package.
+All buttons have a standard click animation. No hover effect.
+When the like buttons has been clicked it turns blue.
+When clicking "Subscribe" button it turns grey and the text changes to "Subscribed".
+When clicking the bell it turns into a new bell icon with two small lines on top of it (like it has been clicked) and is fully grey now.
+
+use simple useState hook to track states of the buttons.
+
+Administration panel:
+Has three buttons and is located in the buttom of the page; so the actual animation can be recorded seperately without interference from the admin panel.
+Used "fixed" positioning for this.
+Three buttons in the admin panel does the following:
+1. Loads intro animation
+2. Loads outro animation
+3. Resets the state of the other component
+
+
+Intro animation:
+The subscribe & like reminder component fades in.
+Initially the white box is empty and then the buttons appear one by one, starting with the subscribe button. Small animation when appearing.
+
+
+Outro animation:
+The subscribe & like reminder component fades out and the screen turns empty
+
+Resets:
+Simply resets the state of all the buttons
+
+
+Techstack:
+- Typescript
+- React
+- Vite
+- TailwindCSS (if necessary?)
+
+Packages:
+- react-spring for animations
+- react-icons for icons
