@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import { AiOutlineLike, AiFillLike } from 'react-icons/ai';
 
@@ -8,26 +9,25 @@ interface LikeButtonProps {
 }
 
 export const LikeButton: React.FC<LikeButtonProps> = ({ isLiked, onClick, style }) => {
-  const [clickSpring, api] = useSpring(() => ({ scale: 1 }));
-
-  const handleClick = () => {
-    // Trigger click animation
-    api.start({
-      scale: 0.9,
-      config: { duration: 75 },
-      onRest: () => api.start({ scale: 1, config: { duration: 75 } }),
-    });
-    onClick();
-  };
+  const [pressed, setPressed] = useState(false);
+  const { scale } = useSpring({ 
+    scale: pressed ? 0.9 : 1,
+    config: { tension: 300, friction: 10 }
+  });
 
   const Icon = isLiked ? AiFillLike : AiOutlineLike;
 
   return (
     <animated.button
-      onClick={handleClick}
+      onMouseDown={() => setPressed(true)}
+      onMouseUp={() => {
+        setPressed(false);
+        onClick();
+      }}
+      onMouseLeave={() => setPressed(false)}
       style={{
         ...style,
-        transform: clickSpring.scale.to((s) => `scale(${s})`),
+        transform: scale.to((s) => `scale(${s})`),
       }}
       className={`flex items-center justify-center cursor-pointer transition-colors bg-transparent border-none ${
         isLiked ? 'text-buttonBlue' : 'text-buttonGrey'
