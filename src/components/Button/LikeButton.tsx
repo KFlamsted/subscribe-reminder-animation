@@ -29,11 +29,11 @@ export const LikeButton: React.FC<LikeButtonProps> = ({ isLiked, onClick, style 
         ...style,
         transform: clickSpring.scale.to((s) => `scale(${s})`),
       }}
-      className={`w-12 h-12 rounded-lg flex items-center justify-center cursor-pointer transition-colors ${
-        isLiked ? 'bg-buttonBlue text-white' : 'bg-buttonGrey text-white'
+      className={`flex items-center justify-center cursor-pointer transition-colors bg-transparent border-none ${
+        isLiked ? 'text-buttonBlue' : 'text-buttonGrey'
       }`}
     >
-      <Icon size={24} />
+      <Icon size={36} />
     </animated.button>
   );
 };

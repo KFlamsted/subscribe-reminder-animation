@@ -1,5 +1,5 @@
-import { useSpring, animated } from '@react-spring/web';
-import { IoNotificationsOutline, IoNotifications } from 'react-icons/io5';
+import { useSpring, animated } from "@react-spring/web";
+import { TbBellOff, TbBellRingingFilled } from "react-icons/tb";
 
 interface BellButtonProps {
   isClicked: boolean;
@@ -7,7 +7,11 @@ interface BellButtonProps {
   style?: React.CSSProperties;
 }
 
-export const BellButton: React.FC<BellButtonProps> = ({ isClicked, onClick, style }) => {
+export const BellButton: React.FC<BellButtonProps> = ({
+  isClicked,
+  onClick,
+  style,
+}) => {
   const [clickSpring, api] = useSpring(() => ({ scale: 1 }));
 
   const handleClick = () => {
@@ -20,7 +24,7 @@ export const BellButton: React.FC<BellButtonProps> = ({ isClicked, onClick, styl
     onClick();
   };
 
-  const Icon = isClicked ? IoNotifications : IoNotificationsOutline;
+  const Icon = isClicked ? TbBellRingingFilled : TbBellOff;
 
   return (
     <animated.button
@@ -29,13 +33,11 @@ export const BellButton: React.FC<BellButtonProps> = ({ isClicked, onClick, styl
         ...style,
         transform: clickSpring.scale.to((s) => `scale(${s})`),
       }}
-      className={`w-12 h-12 rounded-lg flex items-center justify-center cursor-pointer transition-colors border-2 ${
-        isClicked
-          ? 'bg-buttonGrey border-buttonGrey text-iconGrey'
-          : 'bg-white border-buttonGrey text-buttonGrey'
+      className={`flex items-center justify-center cursor-pointer transition-colors bg-transparent border-none ${
+        isClicked ? "text-buttonGrey" : "text-buttonGrey"
       }`}
     >
-      <Icon size={24} />
+      <Icon size={36} />
     </animated.button>
   );
 };
