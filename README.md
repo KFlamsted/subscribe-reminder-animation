@@ -2,6 +2,8 @@
 
 A React application for creating recordable YouTube subscribe/like reminder animations with a green screen background.
 
+Feel free to use the youtube-subscribe-reminder-no-sound-example.mp4 in your videos however you need to add sounds yourself as I'm not allowed to distribute the sounds I'm using my self. (Per the license of the sounds)
+
 ## Features
 
 - ✅ Green screen background (#00FF00) for easy chroma keying
